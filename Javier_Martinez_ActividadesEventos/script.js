@@ -1,27 +1,11 @@
-//Ejercicio 1
-//----------------------------------------------------------------------------------------------------------------------
-document.getElementById("btn1").addEventListener("click", function () {
-    alert("Click");
-});
-//Ejercicio 2
-//----------------------------------------------------------------------------------------------------------------------
-document.addEventListener("mousemove", function (event) {
-    console.log("X: " + event.clientX + " Y: " + event.clientY);
-});
-//Ejercicio 3
-//----------------------------------------------------------------------------------------------------------------------
-window.addEventListener("load", function () {
-    var fecha = new Date();
-    console.log("Tiempo transcurrido desde la carga de la página: " + fecha.getTime());
-});
-//Ejercicio 4
+//Ejercicio 4 y 5
 //----------------------------------------------------------------------------------------------------------------------
 function pintarCelda(celda) {
     if (event.ctrlKey) {
         celda.style.backgroundColor = "red";
     } else if (event.shiftKey) {
-        celda.style.backgroundColor = "yellow";
-    } else {
+        celda.style.backgroundColor = "blue";
+    } else if(event.altKey){
         celda.style.backgroundColor = "white";
     }
 }
@@ -44,6 +28,13 @@ window.onload = function () {
     }
     document.body.appendChild(tabla);
 }
-
-
+function borrarTabla(){
+    var tabla = document.getElementById("tabla");
+    var celdas = tabla.getElementsByTagName("td");
+    for(var i=0;i<celdas.length;i++){
+        celdas[i].style.backgroundColor = "white";
+    }
+}
+var btn = document.getElementById("btn1");
+btn.addEventListener("click", borrarTabla);
 
