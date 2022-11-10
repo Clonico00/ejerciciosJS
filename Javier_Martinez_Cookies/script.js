@@ -102,7 +102,7 @@ function changeLetter() {
 function changeSize() {
     var color = getCookie("size");
     if (color != null) {
-        document.getElementById("p").style.fontSize = color;
+        document.body.style.fontSize = color;
     }
 }
 //----------------------------------------------------------------------------------------------------------------------
