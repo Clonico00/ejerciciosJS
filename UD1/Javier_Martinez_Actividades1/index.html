@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba</title>
+</head>
+<body>
+<!-- 1.- Crea una web en un único archivo html que mediante script ponga el siguiente texto: “Mi primer script” 
+    <script>
+            document.write("Mi primer script")
+    </script>
+-->
+<!-- 2.- Realiza el ejercicio anterior en un fichero script separado
+    <script src = "script.js">
+    </script>
+-->
+<!-- 3.- Crea una web con un botón de tal manera que cuando lo pulses escriba el siguiente mensaje por consola: “Soy la consola”
+    <button onclick="Pressed()">Pulsame</button>
+
+    <script>
+        function Pressed(){
+            console.log("Soy la consola");
+        }
+    </script>
+-->
+<!-- 4.- Modifica el ejercicio anterior para que la salida sea mediante una alerta en una ventana flotante.
+    <button onclick="Pressed()">Pulsame</button>
+
+    <script>
+        function Pressed(){
+            alert("Soy la consola");
+        }
+    </script>
+-->
+<!-- 5.- Diseña una web con tres botones para que al pulsarlos se genere un mensaje de bienvenida en ruso, español e inglés en la misma página. 
+    El mensaje irá en un párrafo (etiqueta <p>). Se pide que los mensajes tengan un color diferente dependiendo del idioma.
+
+    <button onclick="Pressed1()">Ruso</button>
+    <button onclick="Pressed2()">Español</button>
+    <button onclick="Pressed3()">Ingles</button>
+    <div id="contenido"></div>
+
+    <script>
+        function Pressed1(){
+            let contenedor = document.querySelector('#contenido');
+            let p = document.createElement('p');
+            p.innerText = 'добро пожаловать'; 
+            p.style.color = "blue";
+            contenedor.appendChild(p);
+        } 
+        function Pressed2(){
+            let contenedor = document.querySelector('#contenido');
+            let p = document.createElement('p');
+            p.innerText = 'bienvenido'; 
+            p.style.color = "red";
+            contenedor.appendChild(p);        
+        }
+        function Pressed3(){
+            let contenedor = document.querySelector('#contenido');
+            let p = document.createElement('p');
+            p.innerText = 'welcome'; 
+            p.style.color = "green";
+            contenedor.appendChild(p);        
+        }
+    </script>
+
+-->
+<!-- 6.- Modifica el código anterior para que los mensajes de bienvenida se generen con alertas.
+
+    <button onclick="Pressed1()">Ruso</button>
+    <button onclick="Pressed2()">Español</button>
+    <button onclick="Pressed3()">Ingles</button>
+    <script>
+        function Pressed1(){
+            alert('добро пожаловать');
+        } 
+        function Pressed2(){
+            alert('bienvenido');
+      
+        }
+        function Pressed3(){
+            alert('welcome');       
+        }
+    </script>
+
+-->
+<!-- 7.- Cambia el código anterior para que los mensajes de bienvenida se generen en consola.
+    <button onclick="Pressed1()">Ruso</button>
+    <button onclick="Pressed2()">Español</button>
+    <button onclick="Pressed3()">Ingles</button>
+    <script>
+        function Pressed1(){
+            console.log('добро пожаловать');
+        } 
+        function Pressed2(){
+            console.log('bienvenido');
+      
+        }
+        function Pressed3(){
+            console.log('welcome');       
+        }
+    </script>
+
+-->
+<!-- 8.- Transforma el código anterior para que los mensajes de bienvenida se generen con el método write().
+<div id="contenido"></div>
+
+    <button onclick="Pressed1()">Ruso</button>
+    <button onclick="Pressed2()">Español</button>
+    <button onclick="Pressed3()">Ingles</button>
+
+    <script>
+        function Pressed1(){
+            document.write('добро пожаловать');
+            document.write('<button onclick="Pressed1()">Ruso</button><button onclick="Pressed2()">Español</button><button onclick="Pressed3()">Ingles</button><br>');
+            document.close();
+        } 
+        function Pressed2(){
+            document.write("bienvenido");
+            document.write('<button onclick="Pressed1()">Ruso</button><button onclick="Pressed2()">Español</button><button onclick="Pressed3()">Ingles</button><br>');
+            document.close();
+        }
+        function Pressed3(){
+            document.write("welcome");
+            document.write('<button onclick="Pressed1()">Ruso</button><button onclick="Pressed2()">Español</button><button onclick="Pressed3()">Ingles</button><br>');
+            document.close();
+        }
+    </script>
+-->
+<!--9.- ¿En qué se diferencia JavaScript de Java?
+    -Java crea aplicaciones que se ejecutan en una máquina o explorador virtual, mientras que el código JavaScript sólo se ejecuta en un explorador.
+    -Java se compila e interpreta y JavaScript es un lenguaje estrictamente interpretado.
+-->
+
+<!--10.- Describe las ventajas más importantes de usar JavaScript.
+    -Crear webs, aplicaciones web y cualquier sistema Frontend sin mucha complicacion
+    -Diseñar juegos y animaciones que queremos que se ejecuten en un navegador.
+    -Crear servidores de backend sencillos (usando un framework).
+-->
+</body>
+</html>
