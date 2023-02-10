@@ -1,0 +1,39 @@
+<html lang="es">
+<head>
+    <title>Formulario de registro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+<form id="registration-form">
+    <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <label for="phone">Telefono:</label>
+        <input type="text" id="phone" name="phone" required>
+    </div>
+    <div>
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required>
+    </div>
+    <div>
+        <label for="text">Texto:</label>
+        <textarea id="text" name="text" required></textarea>
+    </div>
+    <div>
+        <label for="date">Fecha:</label>
+        <input type="date" id="date" name="date" required>
+    </div>
+    <input type="submit" value="Enviar">
+</form>
+<script></script>
+</body>
+</html>
