@@ -6,12 +6,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .error { color: red; }
-    </style>
 </head>
 <body>
 <form id="registration-form">
+    <h2>Formulario de registro</h2>
     <div>
         <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" required>
@@ -34,6 +32,16 @@
     </div>
     <input type="submit" value="Enviar">
 </form>
-<script></script>
+
+<div id="testimonios" class="default-view">
+    <h2>Testimonios</h2>
+    <button id="btn-tabla">Tabla</button>
+    <button id="btn-default">Tarjetas</button>
+
+    <div class="testimonios-card-container">
+        <!-- Aquí se insertarán dinámicamente los testimonios -->
+    </div>
+
+</div>
 </body>
 </html>

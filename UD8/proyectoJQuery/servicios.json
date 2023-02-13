@@ -1,0 +1,84 @@
+{
+  "services": [
+    {
+      "title": "Servicio de diseño gráfico",
+      "text": "Ofrecemos un servicio de diseño gráfico profesional para ayudar a darle a su marca un aspecto atractivo y coherente.",
+      "link": "https://www.miempresa.com/servicios/diseno-grafico",
+      "image": "https://www.miempresa.com/images/diseno-grafico.jpg"
+    },
+    {
+      "title": "Desarrollo de sitios web",
+      "text": "Ofrecemos servicios de desarrollo de sitios web personalizados y de alta calidad para ayudar a impulsar su presencia en línea.",
+      "link": "https://www.miempresa.com/servicios/desarrollo-web",
+      "image": "https://www.miempresa.com/images/desarrollo-web.jpg"
+    },
+    {
+      "title": "Marketing digital",
+      "text": "Nuestro equipo de marketing digital está equipado para ayudar a mejorar su presencia en línea y atraer más clientes a su negocio.",
+      "link": "https://www.miempresa.com/servicios/marketing-digital",
+      "image": "https://www.miempresa.com/images/marketing-digital.jpg"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Juan Pérez",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc.",
+      "date": "01/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "02/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "03/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "04/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "05/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "06/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "07/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "08/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "09/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "10/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "11/01/2022"
+    },
+    {
+      "name": "Juan Pérez",
+      "text": "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nibh nec dolor maximus faucibus. Morbi porttitor metus a nunc. ",
+      "date": "12/01/2022"
+    }
+  ]
+}
