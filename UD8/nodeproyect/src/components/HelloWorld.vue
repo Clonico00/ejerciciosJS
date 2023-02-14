@@ -1,11 +1,32 @@
 <script setup>
-
 import {useCollection, useFirestore} from 'vuefire'
 import {collection, addDoc, doc, deleteDoc} from 'firebase/firestore'
+import {  getAuth,createUserWithEmailAndPassword } from "firebase/auth";
+import {ref} from "vue";
 
 const db = useFirestore()
 const noticias = useCollection(collection(db, 'noticias'))
 
+
+var usuario = ref(''),contrasena = ref('');
+
+
+const auth = getAuth();
+
+function nuevoUsuario() {
+  createUserWithEmailAndPassword(auth, usuario.value, contrasena.value)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+
+}
 function nuevaNoticia() {
   // Add a new document with a generated id.
   addDoc(collection(db, "noticias"), {
@@ -35,6 +56,10 @@ defineProps({
 
 <template>
   <div class="greetings">
+    Usuario: <input type="text" name="" id="" v-model="usuario">
+    <br>
+    Password: <input type="text" name="" id="" v-model="contrasena">
+    <button @click="nuevoUsuario()">Nuevo usuario</button>
     <ul>
       <li v-for="noticia in noticias" :key="noticia.id" @click="borraNoticia(noticia.id)">
         <span>{{ noticia.titulo }}</span>
