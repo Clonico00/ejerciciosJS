@@ -2,25 +2,26 @@
 <head>
     <title>Formulario de registro</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 <form id="registration-form">
     <h2>Formulario de registro</h2>
     <div>
         <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
+        <input id="name" name="name" required type="text">
     </div>
     <div>
         <label for="phone">Telefono:</label>
-        <input type="text" id="phone" name="phone" required>
+        <input id="phone" name="phone" required type="text">
     </div>
     <div>
         <label for="dni">DNI:</label>
-        <input type="text" id="dni" name="dni" required>
+        <input id="dni" name="dni" required type="text">
     </div>
     <div>
         <label for="text">Texto:</label>
@@ -28,20 +29,32 @@
     </div>
     <div>
         <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date" required>
+        <input id="date" name="date" required type="date">
     </div>
     <input type="submit" value="Enviar">
 </form>
+<div class="default-view" id="servicios">
+    <h2>Servicios</h2>
+    <button id="btn-tabla2">Tabla</button>
+    <button id="btn-default2">Tarjetas</button>
 
-<div id="testimonios" class="default-view">
+    <div class="serivcios-card-container"></div>
+
+</div>
+
+<div class="default-view" id="testimonios">
     <h2>Testimonios</h2>
     <button id="btn-tabla">Tabla</button>
     <button id="btn-default">Tarjetas</button>
 
-    <div class="testimonios-card-container">
-        <!-- Aquí se insertarán dinámicamente los testimonios -->
-    </div>
+    <div class="testimonios-card-container"></div>
 
 </div>
+
+
+<button class="scroll-to-top-btn">
+    <i class="fa fa-arrow-up"></i>
+</button>
+
 </body>
 </html>

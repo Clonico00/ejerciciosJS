@@ -40,8 +40,12 @@ defineProps({
         <span>{{ noticia.titulo }}</span>
       </li>
     </ul>
-    <input v-model="message" placeholder="escriba el titulo de la noticia.."/>
-    <input v-model="message2" placeholder="escriba el contenido de la noticia.."/>
+    Titulo: <br/>
+    <input v-model="message" placeholder="escriba el titulo"/>
+    <br/>
+    Contenido: <br/>
+    <input v-model="message2" placeholder="escriba el contenido"/>
+    <br/>
     <button @click="nuevaNoticiaParam(message,message2)">Nueva noticia</button>
   </div>
 </template>
