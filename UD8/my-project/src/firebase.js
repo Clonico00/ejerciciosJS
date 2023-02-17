@@ -1,7 +1,6 @@
-import {initializeApp} from 'firebase/app'
-import {getFirestore} from 'firebase/firestore'
-
+import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // ... other firebase imports
 
@@ -22,6 +21,6 @@ export const firebaseApp = initializeApp({
 })
 
 // used for the firestore refs
-getFirestore(firebaseApp);
+const app = getFirestore(firebaseApp);
 // Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(firebaseApp);
+export const auth = getAuth(app);

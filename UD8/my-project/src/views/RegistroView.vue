@@ -1,13 +1,12 @@
-<script setup>
-/* eslint-disable-next-line no-unused-vars*/
-
-import { createUserWithEmailAndPassword } from "firebase/auth";
+/* eslint-disable */<script setup>
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+const auth = getAuth();
 import {ref} from "vue";
-import {auth} from "../firebase.js";
-var usuario = ref(''),contrasena = ref('');
 
-function nuevoUsuario() {
-  createUserWithEmailAndPassword(auth, usuario.value, contrasena.value)
+var usuario = ref("");
+var password = ref("");
+function registrar() {
+  createUserWithEmailAndPassword(auth, usuario.value, password.value)
       .then((userCredential) => {
         // Signed in
         // eslint-disable-next-line no-unused-vars
@@ -20,14 +19,14 @@ function nuevoUsuario() {
         // eslint-disable-next-line no-unused-vars
         const errorMessage = error.message;
         // ..
-      });
-
-}
+      });}
 </script>
 <template>
   <div class="registro">
-    Usuario: <input type="text" name="" id="" v-model="usuario">
-    <br>
-    Password: <input type="text" name="" id="" v-model="contrasena">
-    <button @click="nuevoUsuario()">Nuevo usuario</button>  </div>
+    Usuario: <input type="text" v-model="usuario" />
+    <br />
+    Password: <input type="password" v-model="password" />
+    <br />
+    <button @click="registrar">Registrar</button>
+  </div>
 </template>
