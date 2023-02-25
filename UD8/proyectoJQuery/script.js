@@ -227,6 +227,7 @@ $.ajax({
                     // Si la llamada falla, se vuelve a intentar cargar los testimonios después de 5 segundos
                     setTimeout(loadTestimonials, 5000);
                 }
+                
             });
             // Cambia los testimonios cada 10 segundos
             setTimeout(loadTestimonials, 10000);
