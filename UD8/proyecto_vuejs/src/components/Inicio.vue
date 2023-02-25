@@ -8,14 +8,15 @@ defineProps({
 </script>
 
 <template>
-  <div class="greetings">
-    <h3>
-      Bienvenido a la aplicación de Cursos de Informática.
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div class="container mx-auto my-5 py-4">
+    <div class="jumbotron bg-transparent text-center">
+      <h1 class="display-4 mb-4">Bienvenido a la aplicación de Cursos de Informática</h1>
+      <p class="lead mb-5">Descubre nuestra amplia selección de cursos en línea diseñados y dirigidos por expertos en la materia.</p>
+      <router-link to="/ofimatica" class="btn btn-primary btn-lg mr-2">Ver Cursos</router-link>
+    </div>
   </div>
 </template>
+
 
 <style scoped>
 h1 {

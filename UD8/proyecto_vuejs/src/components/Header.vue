@@ -2,10 +2,6 @@
 
 import {ref} from "vue";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
   onAuthStateChanged,
   signOut
 
@@ -16,7 +12,6 @@ let usuarioAutenticado = ref("");
 
 onAuthStateChanged(auth, (user) => {
   usuarioAutenticado.value = !!user;
-  router.push('/')
 
 });
 
@@ -76,9 +71,11 @@ function logOut() {
 .navbar-nav {
   margin-left: 20px;
 }
+
 .navbar-brand {
   margin-right: 20px;
 }
+
 .navbar-nav.mr-auto .nav-item {
   margin-right: 20px;
 }
