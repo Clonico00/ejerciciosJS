@@ -27,3 +27,7 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Link production and hosting
+
+https://proyecto-vuejs-f67ca.web.app/
