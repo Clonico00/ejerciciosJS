@@ -3,16 +3,18 @@
     <h1 class="titulo">
       Cursos de programaci&oacute;n
     </h1>
-    <div v-if="!loaded">
-      <div class="preload"></div>
+    <div v-if="!loaded" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
     <div v-else>
       <div class="container">
-        <div class="row ">
+        <div class="row">
           <div class="col-md-4" v-for="curso in cursos" :key="curso.nombre">
-            <div class="card mb-4 shadow-sm curso-card" @click="showCourse(curso.nombre)">
+            <div class="card mb-4 shadow-sm curso-card" @click="mostrarCursoDetalle(curso)">
               <img :src="curso.imagen" alt="curso-icon" class="card-img-top curso-img">
-              <div class="card-body bg-dark">
+              <div class="card-body bg-dark large d-flex flex-column justify-content-center align-items-center text-white">
                 <h2 class="card-title curso-name">
                   {{ curso.nombre }}
                 </h2>
@@ -25,54 +27,73 @@
                     {{ curso.duracion }}
                   </b>
                 </p>
-                <button v-if="loged" class="btn btn-primary">Ap&uacute;ntate</button>
+                <button v-if="loged" class="btn btn-primary w-100 mt-3">Ap&uacute;ntate</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <DetalleCurso :curso="cursoDetalle" v-if="cursoDetalle" @cerrar="cerrarDetalleCurso" />
     </div>
   </div>
 </template>
 
-<script setup>
+<script>
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { auth, db } from '@/firebase.js';
 import { ref } from 'vue';
 import DetalleCurso from "@/components/detalleCurso.vue";
 
-const cursos = ref([]);
-const loaded = ref(false);
-const nombreCurso = ref('');
-const loged = ref(false);
+export default {
+  components: {
+    DetalleCurso
+  },
+  setup() {
+    const cursos = ref([]);
+    const loaded = ref(false);
+    const loged = ref(false);
+    const cursoDetalle = ref(null);
 
-onAuthStateChanged(auth, (user) => {
-  loged.value = !!user;
-});
+    onAuthStateChanged(auth, (user) => {
+      loged.value = !!user;
+    });
 
-const fetchData = async () => {
-  const querySnapshot = await getDocs(query(collection(db, 'cursos'), where('tipo', '==', 'programacion')));
-  cursos.value = querySnapshot.docs.map(doc => {
-    const data = doc.data();
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(query(collection(db, 'cursos'), where('tipo', '==', 'programacion')));
+      cursos.value = querySnapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          nombre: data.nombre,
+          descripcion: data.descripcion,
+          duracion: data.duracion,
+          imagen: data.imagen,
+        }
+      });
+      loaded.value = true;
+    };
+
+    const mostrarCursoDetalle = (curso) => {
+      cursoDetalle.value = curso;
+    };
+
+    const cerrarDetalleCurso = () => {
+      cursoDetalle.value = null;
+    };
+
+    fetchData();
+
     return {
-      nombre: data.nombre,
-      descripcion: data.descripcion,
-      duracion: data.duracion,
-      imagen: data.imagen
-    }
-  });
-  loaded.value = true;
+      cursos,
+      loaded,
+      loged,
+      cursoDetalle,
+      mostrarCursoDetalle,
+      cerrarDetalleCurso
+    };
+  }
 };
-
-const showCourse = (nombre) => {
-  nombreCurso.value = nombre;
-};
-
-fetchData();
-
 </script>
-
 <style scoped>
 .titulo {
   margin: 20px 0;

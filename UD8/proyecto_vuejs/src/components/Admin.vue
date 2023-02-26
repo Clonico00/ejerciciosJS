@@ -1,144 +1,90 @@
 <template>
-  <div>
-    <div class="curso-section">
-      <h1 class="titulo">
-        Cursos de ofim&aacute;tica
-      </h1>
-      <div v-if="!loaded">
-        <div class="preload"></div>
-      </div>
-      <div v-else>
-        <div class="container">
-          <div class="row ">
-            <div class="col-md-4" v-for="curso in cursos" :key="curso.nombre">
-              <div class="card mb-4 shadow-sm curso-card" @click="showCourse(curso.nombre)">
-                <img :src="curso.imagen" alt="curso-icon" class="card-img-top curso-img">
-                <div class="card-body bg-dark">
-                  <h2 class="card-title curso-name">
-                    {{ curso.nombre }}
-                  </h2>
-                  <p class="card-text curso-descripcion">
-                    {{ curso.descripcion }}
-                  </p>
-                  <p class="curso-duracion">
-                    Duraci&oacute;n:
-                    <b>
-                      {{ curso.duracion }}
-                    </b>
-                  </p>
-                  <button v-if="loged" class="btn btn-primary">Ap&uacute;ntate</button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="header">
+          <h1 class="title">Área privada</h1>
+          <h3 class="subtitle">¡Bienvenido {{ nombreUsuario }}!</h3>
         </div>
       </div>
     </div>
 
-    <div class="curso-section">
-      <h1 class="titulo">
-        Cursos de dise&ntilde;o gr&aacute;fico
-      </h1>
-      <div v-if="!loaded">
-        <div class="preload"></div>
-      </div>
-      <div v-else>
-        <div class="container">
-          <div class="row ">
-            <div class="col-md-4" v-for="curso in cursos" :key="curso.nombre">
-              <div class="card mb-4 shadow-sm curso-card" @click="showCourse(curso.nombre)">
-                <img :src="curso.imagen" alt="curso-icon" class="card-img-top curso-img">
-                <div class="card-body bg-dark">
-                  <h2 class="card-title curso-name">
-                    {{ curso.nombre }}
-                  </h2>
-                  <p class="card-text curso-descripcion">
-                    {{ curso.descripcion }}
-                  </p>
-                  <p class="curso-duracion">
-                    Duraci&oacute;n:
-                    <b>
-                      {{ curso.duracion }}
-                    </b>
-                  </p>
-                  <button v-if="loged" class="btn btn-primary">Ap&uacute;ntate</button>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="cursos">
+          <section class="cursos-ofimatica">
+            <Ofimatica></Ofimatica>
+          </section>
+          <section class="cursos-programacion">
+            <Programacion></Programacion>
+          </section>
+          <section class="cursos-SO">
+            <SO></SO>
+          </section>
         </div>
       </div>
     </div>
-
-    <div class="curso-section">
-      <h1 class="titulo">
-        Cursos de programaci&oacute;n
-      </h1>
-      <div v-if="!loaded">
-        <div class="preload"></div>
-      </div>
-      <div v-else>
-        <div class="container">
-          <div class="row ">
-            <div class="col-md-4" v-for="curso in cursos" :key="curso.nombre">
-              <div class="card mb-4 shadow-sm curso-card" @click="showCourse(curso.nombre)">
-                <img :src="curso.imagen" alt="curso-icon" class="card-img-top curso-img">
-                <div class="card-body bg-dark">
-                  <h2 class="card-title curso-name">
-                    {{ curso.nombre }}
-                  </h2>
-                  <p class="card-text curso-descripcion">
-                    {{ curso.descripcion }}
-                  </p>
-                  <p class="curso-duracion">
-                    Duraci&oacute;n:
-                    <b>
-                      {{ curso.duracion }}
-                    </b>
-                  </p>
-                  <button v-if="loged" class="btn btn-primary">Ap&uacute;ntate</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </template>
-<script setup>
-import { onMounted } from 'vue';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '@/firebase.js';
 
-const ofimatica = [];
-const programacion = [];
-const so = [];
+<script>
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase";
+import { ref } from "vue";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase";
+import Ofimatica from "@/components/Ofimatica.vue";
+import Programacion from "@/components/Programacion.vue";
+import SO from "@/components/SO.vue";
 
-onMounted(async () => {
-  const querySnapshot = await getDocs(query(collection(db, 'cursos')));
-  querySnapshot.forEach((doc) => {
-    const data = doc.data();
-    const curso = {
-      nombre: data.nombre,
-      descripcion: data.descripcion,
-      duracion: data.duracion,
-      imagen: data.imagen
+export default {
+  components: {
+    Ofimatica,
+    Programacion,
+    SO,
+  },
+  setup() {
+    let nombreUsuario = ref("");
+    let cursos = ref([]);
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        nombreUsuario.value = user.email;
+      }
+    });
+
+    const cargarCursos = async () => {
+      const querySnapshot = await getDocs(collection(db, "cursos"));
+      cursos.value = querySnapshot.docs.map((doc) => doc.data());
     };
-    switch (data.tipo) {
-      case 'ofimatica':
-        ofimatica.push(curso);
-        break;
-      case 'programacion':
-        programacion.push(curso);
-        break;
-      case 'so':
-        so.push(curso);
-        break;
-    }
-  });
-});
 
+    cargarCursos();
+
+    return {
+      nombreUsuario,
+      cursos,
+    };
+  },
+};
 </script>
+
+<style scoped>
+.cursos {
+  margin-bottom: 500px;
+}
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+</style>
 
